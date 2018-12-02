@@ -94,7 +94,7 @@ async function model_predict() {
 
 // Preload the ambient background sound
 function preload() {
-    ambient = loadSound('http://localhost:8080/watersound.mp3');
+    ambient = loadSound('watersound.mp3');
 }
 
 function setup() {
@@ -107,7 +107,7 @@ function setup() {
     // Load the trained neural network
     (async () => {
         console.log('Loading model');
-        tfmodel = await tf.loadModel('http://localhost:8080/tfjsmodel/model.json');
+        tfmodel = await tf.loadModel('tfjsmodel/model.json');
         console.log('Model loaded');
     })();
     // "Reset" button
