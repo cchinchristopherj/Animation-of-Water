@@ -13,15 +13,15 @@ In this application, the dataset consists of a large quantity of GIFs of waterfa
 
 The trained neural network will be able to predict the movement of water on a pixel-by-pixel level using these binary masks. A black canvas is drawn to screen and the initial starting location of water and its spatial extent are determined randomly, with water indicated by blue pixels on the black canvas. 
 
-![animation1](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation1.png)
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation1.png" width="400" height="450" />
 
 A binary mask of this initial scene (with 1 indicating a blue pixel of water and 0 indicating the black canvas background) will be given as input to the neural network, which will predict the next binary mask. Values of 1 in this binary mask will be changed into blue pixels and values of 0 will be changed into black pixels. 
 
-![animation2](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation2.png)
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation2.png" width="400" height="450" />
 
 This process will repeat to generate the water scene dynamics and the "Reset" button can be pressed to start a new scene.
 
-![animation3](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation3.png)      
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation3.png" width="400" height="450" />    
 
 If you wish to replicate these results and train your own neural network, follow the subequent sets of instructions: 
 
