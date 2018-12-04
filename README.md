@@ -23,6 +23,17 @@ This process will repeat to generate the water scene dynamics and the "Reset" bu
 
 <img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animationfinal.png" width="400" height="450" />    
 
+The neural network itself is based on Deep Convolutional Generative Adversarial Networks (DCGANs). In DCGANs, a Generator learns to create fake images and a Discriminator learns to differentiate between the fake images of the Generator and real images of the dataset. During training, the two models will compete with each other to become better at their respective tasks, the Generator in particular using feedback (loss) from the Discriminator to learn how to synthesize more realistic images. After training is complete, the trained Generator can then be used to create new images from the state space.
+
+The Discriminator in DCGANs is typically implemented as a deep convolutional neural network, whereby input images are passed through several convolutional layers and downsampled via strided convolutions until the output layer, where a scalar probability value (that the image is real vs fake) is given. 
+
+The Generator is typically implemented by taking as input a vector of noise and upsampling the vector via transposed convolutions until an image of the appropriate dimensions is constructed by the output layer.
+
+In Conditional GANs (CGANs), by contrast, the Generator learns to generate a fake image based on a specified condition (such as class label, text, etc.) instead of a fake image based on a noise distribution. In the case where the condition is an image, the Generator can first pass the image through several convolutional layers to extract a compressed, latent representation. Upsampling via transposed convolutions can then be used to create the new fake image (conditioned on the information extracted from the input "condition" image). Since the problem at hand only requires the neural network to predict the next binary mask from a previous binary mask, a simplified version of this procedure is used in the neural network for this application.
+
+In the neural network, the previous binary mask is given as the "condition" image and passed through three convolutional layers to yield a downsampled, latent representation. Transposed convolutions are then used to upsample the latent representation. The output layer then gives a prediction for
+the next binary mask in sequence. (Since the output layer uses a sigmoid activation function, the outputted image consists of probabilities, where the value for each pixel represents the probability that the pixel has changed value). The loss can be evaluated between the probability prediction and ground truth binary mask. 
+
 If you wish to replicate these results and train your own neural network, follow the subequent sets of instructions: 
 
 Modules and Installation Instructions
