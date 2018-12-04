@@ -21,7 +21,7 @@ A binary mask of this initial scene (with 1 indicating a blue pixel of water and
 
 This process will repeat to generate the water scene dynamics and the "Reset" button can be pressed to start a new scene.
 
-<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation3.png" width="400" height="450" />    
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animationfinal.png" width="400" height="450" />    
 
 If you wish to replicate these results and train your own neural network, follow the subequent sets of instructions: 
 
