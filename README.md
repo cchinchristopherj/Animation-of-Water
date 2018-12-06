@@ -17,6 +17,9 @@ In this application, the dataset consists of a large quantity of GIFs of waterfa
 
 The GIFs were converted into individual frames and these frames subsequently converted into binary masks, where a value of (1) indicates a pixel has changed magnitude and a value of (0) indicates a pixel has retained the same magnitude. In this way, the training set is composed of pairs of binary masks X and Y, where Y is the next binary mask in the sequence of motion that follows X. A neural network trained on this dataset therefore learns the dynamics of water - given an input image frame, it will be able to predict which pixels in the image frame change and which do not. (This simplified framework for the dataset is justified, in the sense that only a limited group of pixels in a GIF will change value to indicate movement in the scene, with the rest of pixels remaining the same to display the underlying background. For example, in a GIF of a waterfall, pixels corresponding to the waterfall in the image and pixels adjacent to the waterfall will change to show the water flowing downward, while pixels for the trees and cliffside will not change value). 
 
+Web Application
+=========================
+
 The trained neural network will be able to predict the movement of water on a pixel-by-pixel level using these binary masks. A black canvas is drawn to screen and the initial starting location of water and its spatial extent are determined randomly, with water indicated by blue pixels on the black canvas. 
 
 <img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation1.png" width="400" height="450" />
@@ -27,7 +30,10 @@ A binary mask of this initial scene (with 1 indicating a blue pixel of water and
 
 This process will repeat to generate the water scene dynamics and the "Reset" button can be pressed to start a new scene.
 
-<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animationfinal.png" width="400" height="450" />    
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animationfinal.png" width="400" height="450" />   
+
+Model Architecture
+=========================
 
 The neural network itself is based on Deep Convolutional Generative Adversarial Networks (DCGANs). In DCGANs, a Generator learns to create fake images and a Discriminator learns to differentiate between the fake images of the Generator and real images of the dataset. During training, the two models will compete with each other to become better at their respective tasks, the Generator in particular using feedback (loss) from the Discriminator to learn how to synthesize more realistic images. 
 
@@ -97,3 +103,10 @@ In order to replicate the process used to train the neural network, identify the
     python animation_of_water.py
     
 This trains the weights of the neural network on the dataset and saves the architecture and weights of the model to your hard disk as both a Keras HDF5 file and tensorflow.js JSON and binary weight shard file(s). 
+
+References
+=========================
+
+Khan, Mir, et al. ["Recurrent Neural Networks for Modeling Motion Capture Data."](https://www.eurasip.org/Proceedings/Eusipco/Eusipco2017/wpapers/DL2.pdf) IWCIM: International Workshop on Computational Intelligence for Multimedia Understanding, 2017.
+
+Vondrick, Carl, et al. ["Generating Videos with Scene Dynamics."](http://www.cs.columbia.edu/~vondrick/tinyvideo/) 29th Conference on Neural Information Processing Systems (NIPS 2016). 
