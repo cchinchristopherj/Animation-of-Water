@@ -11,7 +11,7 @@ Deep learning has been famously used for image classification and sequence gener
 
 In this application, the dataset consists of a large quantity of GIFs of waterfalls downloaded from Google Images. 
 
-![waterfall](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/waterfall.gif)
+![waterfall](https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/waterfall.gif)
 
 *Representative waterfall GIF from the training set*
 
@@ -22,22 +22,22 @@ Web Application
 
 The trained neural network will be able to predict the movement of water on a pixel-by-pixel level using these binary masks. A black canvas is drawn to screen and the initial starting location of water and its spatial extent are determined randomly, with water indicated by blue pixels on the black canvas. 
 
-<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation1.png" width="400" height="450" />
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/animation1.png" width="400" height="450" />
 
 A binary mask of this initial scene (with 1 indicating a blue pixel of water and 0 indicating the black canvas background) will be given as input to the neural network, which will predict the next binary mask. Values of 1 in this binary mask will be changed into blue pixels and values of 0 will be changed into black pixels. 
 
-<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animation2.png" width="400" height="450" />
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/animation2.png" width="400" height="450" />
 
 This process will repeat to generate the water scene dynamics and the "Reset" button can be pressed to start a new scene.
 
-<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/animationfinal.png" width="400" height="450" />   
+<img src="https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/animationfinal.png" width="400" height="450" />   
 
 Model Architecture
 =========================
 
 The neural network itself is based on Deep Convolutional Generative Adversarial Networks (DCGANs). In DCGANs, a Generator learns to create fake images and a Discriminator learns to differentiate between the fake images of the Generator and real images of the dataset. During training, the two models will compete with each other to become better at their respective tasks, the Generator in particular using feedback (loss) from the Discriminator to learn how to synthesize more realistic images. 
 
-![adversarial_model](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/adversarial_model.png)
+![adversarial_model](https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/adversarial_model.png)
 
 *Full DCGAN model including Generator and Discriminator with Loss computed for the MNIST dataset. Image Source: [GAN by Example using Keras on Tensorflow Backend](https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0)*
 
@@ -45,19 +45,19 @@ After training is complete, the trained Generator can then be used to create new
 
 The Discriminator in DCGANs is typically implemented as a deep convolutional neural network, whereby input images are passed through several convolutional layers and downsampled via strided convolutions until the output layer, where a scalar probability value (that the image is real vs fake) is given. 
 
-![discriminator](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/discriminator.png)
+![discriminator](https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/discriminator.png)
 
 *Discriminator Architecture. Image Source: [GAN by Example using Keras on Tensorflow Backend](https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0)*
 
 The Generator is typically implemented by taking as input a vector of noise and upsampling the vector via transposed convolutions until an image of the appropriate dimensions is constructed by the output layer.
 
-![generator](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/generator.png)
+![generator](https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/generator.png)
 
 *Generator Architecture. Image Source: [GAN by Example using Keras on Tensorflow Backend](https://towardsdatascience.com/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0)*
 
 In Conditional GANs (CGANs), by contrast, the Generator learns to generate a fake image based on a specified condition (such as class label, text, etc.) instead of a fake image based on a noise distribution. 
 
-![conditionalgan](https://github.com/cchinchristopherj/Animation-of-Water/blob/cchinchristopherj-patch-1/Images/conditionalgan.png)
+![conditionalgan](https://github.com/cchinchristopherj/Animation-of-Water/blob/master/Images/conditionalgan.png)
 
 *Conditional GAN. Generator and Discriminator are conditioned on image labels, an extension of the latent space that provides an additional source of information for the two competing models. Image Source: [GAN - CGAN & InfoGAN (using labels to improve GAN)](https://medium.com/@jonathan_hui/gan-cgan-infogan-using-labels-to-improve-gan-8ba4de5f9c3d)*
 
