@@ -116,7 +116,7 @@ function setup() {
     // Button to turn on Audio
     ctx = getAudioContext();
     ctxOn = createButton('Sound On');
-    ctxOn.position(80,0);
+    ctxOn.position(20,150);
     ctxOn.mousePressed(() => {
         ctx.resume().then(() => {
             ctxOn.hide();
