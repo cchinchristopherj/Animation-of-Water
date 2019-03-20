@@ -16,8 +16,11 @@ let max_water_len = 8;
 let min_water_len = 3;
 let water_len;
 let water_loc;
-// DOM variable
+// DOM variables
 let button1; 
+let ctxOn;
+// AudioContext
+let ctx;
 
 /**
  * Helper function to reshape a 1D array into a desired 2D shape
@@ -110,6 +113,15 @@ function setup() {
         tfmodel = await tf.loadModel('tfjsmodel/model.json');
         console.log('Model loaded');
     })();
+    // Button to turn on Audio
+    ctx = getAudioContext();
+    ctxOn = createButton('Sound On');
+    ctxOn.position(80,0);
+    ctxOn.mousePressed(() => {
+        ctx.resume().then(() => {
+            ctxOn.hide();
+  	    });
+    });
     // "Reset" button
     button1 = createButton('Reset');
     button1.position(80,30);
